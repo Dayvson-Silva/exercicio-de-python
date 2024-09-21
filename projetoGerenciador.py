@@ -1,27 +1,5 @@
 # Tarefas armazenadas
-tarefas = [
-    # {
-    #     "nome": "caca",
-    #     "Descrição": "cece",
-    #     "prioridade": 1,
-    #     "categoria": "coco",
-    #     "Status": False,
-    # },
-    # {
-    #     "nome": "kaka",
-    #     "Descrição": "keke",
-    #     "prioridade": 2,
-    #     "categoria": "koko",
-    #     "Status": False,
-    # },
-    # {
-    #     "nome": "dada",
-    #     "Descrição": "dede",
-    #     "prioridade": 5,
-    #     "categoria": "dodo",
-    #     "Status": False,
-    # },
-]
+tarefas = []
 
 
 # Função de adicionar tarefa
@@ -43,22 +21,30 @@ def listar_tarefas():
 
     prioridade = int(input("Escolha qual prioridade de tarefa voce deseja ver: "))
 
+    # Verifica se há alguma tarefa na lista
     if not tarefas:
         print("Nenhuma tarefa encontrada.")
         return
 
+    # Para a tarefa atual no range do tamanho da lista de tarefas
     for tarefa in range(len(tarefas)):
 
+        # Pega o valor da chave "Prioridade"
         prioridade_tarefa = tarefas[tarefa].get("Prioridade")
 
+        # Verifica se o valor da chave "Prioriadade" atual é igual ao valor que o úsuario digitou anteriormente
         if prioridade_tarefa == prioridade:
+
+            # Pega a chave e o valor da chave atual e transforma a lista em dicionário para printar certinho
             for chave, valor in tarefas[tarefa].items():
                 print(f"{chave}: {valor}")
 
+        # Espaço em branco pra cada tarefa
         print()
 
 
 # Função editar tarefa
+
 
 while True:
 
