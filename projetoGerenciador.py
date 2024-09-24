@@ -1,5 +1,20 @@
 # Tarefas armazenadas
-tarefas = []
+tarefas = [
+    {
+        "Nome": "passear",
+        "Descrição": "sair com o cachorro",
+        "Prioridade": 2,
+        "Categoria": "diversao",
+        "Status": False,
+    },
+    {
+        "Nome": "jogar",
+        "Descrição": "jogar bola",
+        "Prioridade": 1,
+        "Categoria": "diversao",
+        "Status": False,
+    },
+]
 
 
 # Função de adicionar tarefa
@@ -44,35 +59,113 @@ def listar_tarefas():
 
 
 # Função editar tarefa
+def editar_tarefa():
+    # Para a tarefa autal no range do tamanha da lista de tarefas
+    for tarefa in range(len(tarefas)):
+
+        # Printa a chave e o valor da tarefa atual
+        for chave, valor in tarefas[tarefa].items():
+            print(f"{chave}: {valor}")
+
+        # Espaço em branco
+        print()
+
+    editar = int(input("Qual tarefa você deseja editar: "))
+
+    tarefa_escolhida = tarefas[editar]
+
+    for _ in tarefa_escolhida:
+        campo = int(
+            input(
+                "\n1 - Editar nome \n2 - Editar descrição \n3 - Editar prioridade \n4 - Editar categoria \n5 - voltar \nEscolha qual campo você deseja editar: "
+            )
+        )
+
+        match campo:
+            case 1:
+                print("\nVocê escolheu editar nome, siga os passos abaixo")
+                campo_nome = tarefa_escolhida.get("Nome")
+                mudar_nome = str(
+                    input(
+                        f"\nDigite o nome que você quer que seja no lugar de {campo_nome}: "
+                    )
+                )
+                tarefa_escolhida["Nome"] = mudar_nome
+
+            case 2:
+                print("\nVocê escolheu editar descrição, siga os passos abaixo")
+                campo_desc = tarefa_escolhida.get("Descrição")
+                mudar_desc = str(
+                    input(
+                        f"\nDigite a descrição que você quer que seja no lugar de {campo_desc}: "
+                    )
+                )
+
+                tarefa_escolhida["Descrição"] = mudar_desc
+
+            case 3:
+                print("\nVocê escolheu editar prioridade, siga os passos abaixo")
+                campo_prioridade = tarefa_escolhida.get("Prioridade")
+                mudar_prioridade = str(
+                    input(
+                        f"\nDigite a descrição que você quer que seja no lugar de {campo_prioridade}: "
+                    )
+                )
+
+                tarefa_escolhida["Prioridade"] = mudar_prioridade
+
+            case 4:
+                print("\nVocê escolheu editar status, siga os passos abaixo")
+                campo_status = tarefa_escolhida.get("Status")
+                mudar_status = str(
+                    input(
+                        f"\nDigite o status que você quer que seja no lugar de {campo_status}: "
+                    )
+                )
+
+                tarefa_escolhida["Status"] = mudar_status
+
+            case 5:
+                editar_tarefa()
 
 
 while True:
 
+    print("\n====================- Gerenciador de tarefas -====================")
     option = int(
         input(
-            "\n1 - Adicionar \n2 - Listar \n3 - Editar \n4 - Deletar \n5 - Sair \nDigite uma das opções listadas acima: "
+            "\n1 - Adicionar \n2 - Listar \n3 - Editar \n4 - Deletar \n5 - Concluir \n6 - Sair \nDigite uma das opções listadas acima: "
         )
     )
 
     match option:
 
         case 1:
-            print("\nVocê escolheu adicionar uma tarefa, siga os passos abaixo:")
+            print("\n====================- Adicionar -====================")
+            print("Você escolheu adicionar uma tarefa, siga os passos abaixo\n")
             add_tarefa()
 
         case 2:
 
-            print("\nVocê escolheu listar tarefas, siga os passos abaixo \n")
+            print("\n====================- Listar -====================")
+            print("Você escolheu listar tarefas, siga os passos abaixo\n")
             listar_tarefas()
 
         case 3:
-            print("\nVocê escolheu editar uma tarefa, siga os passos abaixo:")
-            editar()
+            print("\n====================- Editar -====================")
+            print("Você escolheu editar uma tarefa, siga os passos abaixo\n")
+            editar_tarefa()
 
         case 4:
-            print("\nVocê escolheu deletar uma tarefa, siga os passos abaixo:")
-            deletar()
+            print("\n====================- Deletar -====================")
+            print("Você escolheu deletar uma tarefa, siga os passos abaixo\n")
+            deletar_tarefa()
 
         case 5:
+            print("\n====================- Concluir -====================")
+            print("Você escolheu concluir uma tarefa, siga os passos abaixo\n")
+            concluir()
+
+        case 6:
             print("\nVocê escolheu sair de tudo.")
             break
