@@ -70,11 +70,14 @@ def editar_tarefa():
         # Espaço em branco
         print()
 
-    editar = int(input("Qual tarefa você deseja editar: "))
+    editar = int(input("DIGITE O ÍNDICE DA TAREFA QUE VOCÊ DESEJA EDITAR: "))
 
+    # Armazena qual tarefa o usuario quer editar
     tarefa_escolhida = tarefas[editar]
 
+    # Itera sobre as chaves e valores da tarefa escolhida
     for _ in tarefa_escolhida:
+        # Armazena o que o usuario quer editar na tarefa
         campo = int(
             input(
                 "\n1 - Editar nome \n2 - Editar descrição \n3 - Editar prioridade \n4 - Editar categoria \n5 - voltar \nEscolha qual campo você deseja editar: "
@@ -90,6 +93,7 @@ def editar_tarefa():
                         f"\nDigite o nome que você quer que seja no lugar de {campo_nome}: "
                     )
                 )
+                # Muda o valor da chave escolhida(nome)
                 tarefa_escolhida["Nome"] = mudar_nome
 
             case 2:
@@ -100,7 +104,7 @@ def editar_tarefa():
                         f"\nDigite a descrição que você quer que seja no lugar de {campo_desc}: "
                     )
                 )
-
+                # Muda o valor da chave escolhida(descrição)
                 tarefa_escolhida["Descrição"] = mudar_desc
 
             case 3:
@@ -111,21 +115,22 @@ def editar_tarefa():
                         f"\nDigite a descrição que você quer que seja no lugar de {campo_prioridade}: "
                     )
                 )
-
+                # Muda o valor da chave escolhida(prioridade)
                 tarefa_escolhida["Prioridade"] = mudar_prioridade
 
             case 4:
-                print("\nVocê escolheu editar status, siga os passos abaixo")
-                campo_status = tarefa_escolhida.get("Status")
-                mudar_status = str(
+                print("\nVocê escolheu editar categoria, siga os passos abaixo")
+                campo_categoria = tarefa_escolhida.get("Categoria")
+                mudar_categoria = str(
                     input(
-                        f"\nDigite o status que você quer que seja no lugar de {campo_status}: "
+                        f"\nDigite o categoria que você quer que seja no lugar de {campo_categoria}: "
                     )
                 )
-
-                tarefa_escolhida["Status"] = mudar_status
+                # Muda o valor da chave escolhida(categoria)
+                tarefa_escolhida["Categoria"] = mudar_categoria
 
             case 5:
+                # Volta pra qual tarefa o usuario deseja editar
                 editar_tarefa()
 
 
