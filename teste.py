@@ -15,6 +15,7 @@ tarefas = [
     },
 ]
 
-editar = int(input("Digite a tarefa que deseja editar: "))
-editar_tarefa = tarefas[editar]
-print(editar_tarefa)
+thisdict = {"brand": "Ford", "model": "Mustang", "year": 1964}
+keys = thisdict.keys()
+for keys in thisdict.values():
+    print(keys)
