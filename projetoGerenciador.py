@@ -118,6 +118,17 @@ def editar_tarefa():
                 # Volta pra qual tarefa o usuario deseja editar
                 editar_tarefa()
 
+   
+# Função deletar tarefa
+def deletar_tarefa():
+    nome_tarefa = input("Digite o nome da tarefa que deseja deletar: ")
+    for tarefa in tarefas:
+        if tarefa['Nome'] == nome_tarefa:
+            tarefas.remove(tarefa)
+            print(f'Tarefa "{nome_tarefa}" deletada.')
+            return
+    print(f'Tarefa "{nome_tarefa}" não encontrada.')
+
 
 while True:
 
