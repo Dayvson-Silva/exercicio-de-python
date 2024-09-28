@@ -1,7 +1,6 @@
 # Tarefas armazenadas
 tarefas = []
 
-
 # Função de adicionar tarefa
 def add_tarefa():
 
@@ -15,33 +14,62 @@ def add_tarefa():
     tarefas.append(tarefa)
     print(tarefa)
 
-
 # Função de listar tarefas
 def listar_tarefas():
+    listar = int(input("1 - Todas as tarefas de forma ordenada \n2 - Apenas por prioridade \nDigite como você quer listar as tarefas: "))
+    match listar:
+        case 1:
+            print("\nVocê escolheu listar todas as tarefas de forma ordenada")
 
-    prioridade = int(input("Escolha qual prioridade de tarefa voce deseja ver: "))
+            # Contador de tarefas
+            contador_tarefa = 1
 
-    # Verifica se há alguma tarefa na lista
-    if not tarefas:
-        print("Nenhuma tarefa encontrada.")
-        return
+            # Verifica se há alguma tarefa na lista
+            if not tarefas:
+                print("Nenhuma tarefa encontrada.")
+                return
+            
+            for tarefa in tarefas:  
+                print(f"\n-------------------- Tarefa {contador_tarefa} ------------------------")
 
-    # Para a tarefa atual no range do tamanho da lista de tarefas
-    for tarefa in range(len(tarefas)):
+                # Pega a chave e o valor da tarefa atual pelo índice da tarefa atual
+                for chave, valor in tarefas[tarefas.index(tarefa)].items():
+                    print(f"{chave}: {valor}")
+                
+                contador_tarefa += 1
+                
+                # Espaço final pra cada tarefa
+                print("--------------------------------------------")
+            
+        case 2:
+            print("\nVocê escolheu listar por prioridade \n")
+            prioridade = int(input("Escolha qual prioridade de tarefa voce deseja ver: "))
 
-        # Pega o valor da chave "Prioridade"
-        prioridade_tarefa = tarefas[tarefa].get("Prioridade")
+            # Contador de tarefas
+            contador_tarefa = 1
 
-        # Verifica se o valor da chave "Prioriadade" atual é igual ao valor que o úsuario digitou anteriormente
-        if prioridade_tarefa == prioridade:
+            # Verifica se há alguma tarefa na lista
+            if not tarefas:
+                print("Nenhuma tarefa encontrada.")
+                return
+            
+            # Para a tarefa atual no range do tamanho da lista de tarefas
+            for tarefa in range(len(tarefas)):
+                # Pega o valor da chave "Prioridade"
+                prioridade_tarefa = tarefas[tarefa].get("Prioridade")
 
-            # Pega a chave e o valor da chave atual e transforma a lista em dicionário para printar certinho
-            for chave, valor in tarefas[tarefa].items():
-                print(f"{chave}: {valor}")
+                # Verifica se o valor da chave "Prioriadade" atual é igual ao valor que o úsuario digitou anteriormente
+                if prioridade_tarefa == prioridade:
+                    print(f"\n-------------------- Tarefa {contador_tarefa} ------------------------")
+                    
+                    # Pega a chave e o valor da chave atual e transforma a lista em dicionário para printar
+                    for chave, valor in tarefas[tarefa].items():
+                        print(f"{chave}: {valor}")
 
-        # Espaço em branco pra cada tarefa
-        print()
+                contador_tarefa += 1
 
+                # Espaço final pra cada tarefa
+                print("--------------------------------------------")
 
 # Função editar tarefa
 def editar_tarefa():
@@ -118,17 +146,21 @@ def editar_tarefa():
                 # Volta pra qual tarefa o usuario deseja editar
                 editar_tarefa()
 
-   
 # Função deletar tarefa
 def deletar_tarefa():
+
+    # Pega o nome da tarefa que o usuario deseja deletar
     nome_tarefa = input("Digite o nome da tarefa que deseja deletar: ")
+
     for tarefa in tarefas:
+
         if tarefa['Nome'] == nome_tarefa:
+
             tarefas.remove(tarefa)
             print(f'Tarefa "{nome_tarefa}" deletada.')
             return
+        
     print(f'Tarefa "{nome_tarefa}" não encontrada.')
-
 
 while True:
 
