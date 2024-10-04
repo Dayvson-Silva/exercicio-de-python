@@ -130,7 +130,15 @@ def deletar_tarefa():
     print(f'Tarefa "{nome_tarefa}" não encontrada.')
 
 
-
+        # Função para criar tarefas
+def concluir_tarefa():
+    nome_tarefa = input("Digite o nome da tarefa que deseja concluir: ")
+    for tarefa in tarefas:
+        if tarefa['Nome'] == nome_tarefa:
+            tarefa['Status'] = True
+            print(f'Tarefa "{nome_tarefa}" concluída.')
+            return
+        print(f'Tarefa "{nome_tarefa}" não encontrada.')
 
 
 
@@ -170,7 +178,7 @@ while True:
         case 5:
             print("\n====================- Concluir -====================")
             print("Você escolheu concluir uma tarefa, siga os passos abaixo\n")
-            concluir()
+            concluir_tarefa()
 
         case 6:
             print("\nVocê escolheu sair de tudo.")
